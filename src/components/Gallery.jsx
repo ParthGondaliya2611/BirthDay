@@ -8,21 +8,29 @@ const shapes = [
   "rounded-2xl",
   "rounded-[1.5rem]",
   "rounded-tl-[40%] rounded-br-[40%]",
+  "rounded-full",
+  "rounded-tr-[3rem] rounded-bl-[3rem]",
+  "rounded-t-[2rem]",
+];
+
+const photos = [
+  "/img/7.JPG",
+  "/img/2.jpg",
+  "/img/5.JPG",
+  "/img/9.JPG",
+  "/img/11.JPG",
+  "/img/21.JPG",
+  "/img/22.JPG",
+  "/img/23.JPG",
+  "/img/24.JPG",
+  "/img/13.JPG",
+  "/img/25.JPG",
+
 ];
 
 const Gallery = () => {
-  const photos = [
-    "/img/6.JPG",
-    "/img/2.jpg",
-    "/img/12.JPG",
-  ];
-
   return (
     <div className="py-16 bg-white px-4 sm:px-6 md:px-10">
-      {/* <h2 className="text-center text-3xl sm:text-4xl font-bold text-pink-600 mb-10 leading-tight">
-        💕 Beautiful Memories
-      </h2> */}
-
       <div className="max-w-7xl mx-auto">
         <Swiper
           slidesPerView={1.2}
@@ -40,13 +48,19 @@ const Gallery = () => {
         >
           {photos.map((src, idx) => (
             <SwiperSlide key={idx}>
-              <motion.img
+              <motion.div
+                initial={{ opacity: 0, y: 60, rotate: -3 }}
+                animate={{ opacity: 1, y: 0, rotate: 0 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
                 whileHover={{ scale: 1.05, rotate: 2 }}
-                transition={{ duration: 0.4 }}
-                src={src}
-                alt={`Memory ${idx + 1}`}
-                className={`mx-auto shadow-xl w-full h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] object-cover ${shapes[idx % shapes.length]}`}
-              />
+                className={`overflow-hidden w-full h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] shadow-xl hover:shadow-pink-200 hover:shadow-2xl transition-shadow duration-500 mx-auto ${shapes[idx % shapes.length]}`}
+              >
+                <img
+                  src={src}
+                  alt={`Memory ${idx + 1}`}
+                  className="w-full h-full object-cover transition-transform duration-700"
+                />
+              </motion.div>
             </SwiperSlide>
           ))}
         </Swiper>
