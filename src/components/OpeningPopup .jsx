@@ -29,7 +29,7 @@ const OpeningPopup = () => {
       else clearInterval(interval);
     }, 300);
 
-    const timer = setTimeout(() => setShow(false), 6500);
+    const timer = setTimeout(() => setShow(false), 7000);
     return () => {
       clearInterval(interval);
       clearTimeout(timer);
